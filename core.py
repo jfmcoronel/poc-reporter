@@ -4,6 +4,7 @@ import asyncio
 import websockets
 import time
 
+IP_FILEPATH = "ips.txt"
 PORT = 29830
 
 
@@ -36,9 +37,8 @@ def aggregator_main():
     # TODO: Loop queries
     # TODO: Update UI
 
-    ips = [
-        "127.0.0.1",
-    ]
+    with open(IP_FILEPATH, "r") as f:
+        ips = [line.strip() for line in f.readlines()]
 
     for ip in ips:
         asyncio.get_event_loop().run_until_complete(inquire(ip))
