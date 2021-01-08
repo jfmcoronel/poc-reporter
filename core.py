@@ -19,7 +19,7 @@ async def report(ws, path):
 
 
 def reporter_main():
-    server = websockets.serve(report, "localhost", PORT)
+    server = websockets.serve(report, "0.0.0.0", PORT)
     asyncio.get_event_loop().run_until_complete(server)
     print(f"Listening on port {PORT}...")
     asyncio.get_event_loop().run_forever()
